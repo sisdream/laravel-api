@@ -19,7 +19,7 @@
                 @forelse ($types as $type)
                     <tr>
                         <th scope="row">{{ $type->id }}</th>
-                        <td>{{ $type->label }}</td>
+                        <td>{{ $type->lable }}</td>
                       
                         <td>{{ $type->color }}</td>
 

@@ -11,16 +11,25 @@
 
         <form action="{{ route('admin.types.update', $type) }}" method="POST">
             @csrf
-
             @method('PATCH')
 
             <div class="row g-3">
                 <div class="col-6">
                     <label for="title" class="form-label">Etichetta</label>
                     <input type="text" class="form-control @error('label') is-invalid @enderror" id="label"
-                        name="label" value="{{ $errors->any() ? old('label') : $type->label }}">
+                        name="label" value="{{ $errors->any() ? old('label') : $type->lable }}">
 
                     @error('label')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="col-3">
+                    <label for="title" class="form-label">Colore</label>
+                    <input type="text" class="form-control @error('color') is-invalid @enderror" id="color"
+                        name="color" value="{{ $errors->any() ? old('color') : $type->color }}">
+
+                    @error('color')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
