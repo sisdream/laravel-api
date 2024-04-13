@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UpdateTypeRequest;
-use App\Http\Requests\EditTypeRequest;
+use App\Http\Requests\Auth\UpdateTypeRequest;
 use App\Models\Type;
-use Illuminate\Http\Request;
+
+
+
 
 class TypeController extends Controller
 {
@@ -79,6 +80,7 @@ class TypeController extends Controller
      */
     public function update(UpdateTypeRequest $request, Type $type)
     {
+
         $request->validated();
         $data = $request->all();
         $type->update($data);
