@@ -80,7 +80,6 @@ class TypeController extends Controller
      */
     public function update(UpdateTypeRequest $request, Type $type)
     {
-
         $request->validated();
         $data = $request->all();
         $type->update($data);

@@ -20,7 +20,7 @@
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
-                    <!-- CATEGORIA! -->
+                <!-- CATEGORIA! -->
                 <div class="col-6">
                     <label for="type_id" class="form-label">Categoria</label>
                     <select type="text" class="form-select @error('type_id') is-invalid @enderror" id="type_id"
@@ -44,12 +44,25 @@
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
-    
+                <!-- TECHNOLOGIES -->
+                <div class="col">
+                    <label for="technology_id" class="form-label">Tecnologie</label><br>
+                                   
+                    @foreach($technologies as $technology)
+                        <input class="me-2 ms-3 form-check-input form-control @error('technologies') is-invalid @enderror" type="checkbox" value="{{ $technology->id }}" name="technologies[]"  {{ in_array($technology->id, old('technologies', $project_technologies_id ?? [])) ? 'checked' : '' }} >{!! $technology->getBadge() !!}</input>
+                    @endforeach
+                    
+                </div>
+
                 <!-- FILE UPLOAD -->
                     
                 <div class="mb-3">
-                <label for="image" class="form-label">Inserisci immagine</label>
-                <input type="file" class="form-control" id="image" name="image" accept="image/*">
+                    <label for="image" class="form-label">Inserisci immagine</label>
+                    <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image" accept="image/*">
+                
+                    @error('image')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 <div class="col-2">
